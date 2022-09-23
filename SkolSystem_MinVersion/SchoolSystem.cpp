@@ -57,6 +57,27 @@ void add_student() {
 	}
 }
 
+void Sök() {
+
+	int name;
+	cout << "skriv namnet på den eleven du vill ha information på!" << endl;
+	cout << "skriv bara namn och inget annat =)" << endl;
+	cin >> name;
+	for (int  i= 0; i < total; i++)
+	{
+		if (name == arr1[i].size())
+		{
+			cout << "Data of student: " << i + 1 << endl << endl;
+			cout << "Name: " << arr1[i] << endl;
+			cout << "search_number: " << arr2[i] << endl;
+			cout << "course: " << arr3[i] << endl;
+			cout << "class: " << arr4[i] << endl;
+			cout << "contact: " << arr5[i] << endl << endl;
+		}
+	}
+
+}
+
 void registered_students() {
 	for (int i = 0; i < total; i++)
 	{
@@ -76,7 +97,7 @@ void PrintMenu()
 	cout << "1. add student" << endl;
 	cout << "2. add school class" << endl;
 	cout << "3. registerd students" << endl;
-	cout << "4. information about student" << endl;
+	cout << "4. search for student" << endl;
 	cout << "5. exit program" << endl;
 	cout << "";
 }
@@ -108,7 +129,7 @@ void SchoolSystem::Run()
 			break;
 
 		case 4:
-
+			Sök();
 
 			break;
 
