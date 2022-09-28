@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include<algorithm>
+
 
 
 //mycket utav namnen på funktionerna kommer ändras och så!!
@@ -16,37 +18,130 @@ void SchoolSystem::AddStudent(std::string newName, int age)
 	cin >> antal;
 	for (int i = 0; i < antal; i++)
 	{
-		//2 strings
-		string input; //2 st
 		cout<<""<<endl;
 		//input
 		Student student;
 		cout << "vad ska din elev heta?" << endl;
 		cin >> student.name;
-		student.name = input;
 		//lägger till i vektorn
 		students.push_back(student);
-	}
 
+	}
+	
 	
 }
 
 void SchoolSystem::School_klass() {
-	std::string schoolclass = "";
-	schoolClasses.push_back(schoolclass);
+	int antal;
+	cout << "hur många klasser vill du ha?" << endl;
+	cin >> antal;
+		for (int i = 0; i < antal; i++)
+		{
+			string schoolclass = "";
+			cout << "vad ska din första klass heta?" << endl;
+			cin >> schoolclass;
+			schoolClasses.push_back(schoolclass);
+		}
+	
 }
 
-void SchoolSystem::registrerade_elever() {
+void SchoolSystem::registrerade_elever() 
+{
 	cout << "här är dina elever." << endl;
-	for (int i = 0; i < students.size(); i++)
+	for (size_t i = 0; i < students.size(); i++)
 	{
-		cout<<"namn: "<< students[i].name <<endl;
+		cout << "namn: " << students[i].name << endl;
 	}
+}
+
+void SchoolSystem::registrerade_klasser() 
+{
+	cout << "här är dina klasser" << endl;
+	for (int i = 0; i < schoolClasses.size(); i++)
+	{
+		cout << "klass: " << schoolClasses[i] << endl;
+	}
+
 }
 
 void SchoolSystem::RemoveStudent()
 {
+	string input = "";
+
+	cout << "vilken elev vill du ta bort?" << endl;
+	cin >> input;
+
+	for (size_t i = 0; i < students.size(); i++)
+	{
+		if (input == students[i].name)
+		{
+			cout << " systemet har tagit bort: " << students[i].name << endl;
+			students[i].name = "";
+
+			break;
+		}
+	}
 }
+
+void SchoolSystem::Removeclass()
+{
+	string input = "";
+
+	cout << "vilken klass med elever vill du ta bort?" << endl;
+	cin >> input;
+
+	for (size_t i = 0; i < schoolClasses.size(); i++)
+	{
+		if (input == schoolClasses[i])
+		{
+			cout << " systemet har tagit bort: " << schoolClasses[i] << endl;
+			schoolClasses[i] = "";
+			break;
+		}
+	}
+}
+
+void SchoolSystem::AddStudent_class() {
+
+	string namn;
+	string schoolClass;
+
+	//feedback namn
+	cin >> namn;
+
+	cin >> schoolClass;
+
+	cout << "skriv en klass som du vill lägga in en elev i" << endl;
+	cin >> schoolClass;
+	for (auto& klass : schoolClasses)
+	{
+		if (schoolClass != klass)
+		{
+			return;
+		}
+	}
+
+	for (auto& elev : students)
+	{
+		if (namn == elev)
+		{
+
+		}
+	}
+
+	/*for (auto& classes : schoolClasses)
+	{
+		if (classes != schoolClasses) return;
+	}
+
+	for (auto& student : students)
+	{
+		if (student.name == namn) student.SchoolClass = schoolClass;
+	}*/
+
+}
+
+
 
 void PrintMenu()
 {
@@ -54,10 +149,11 @@ void PrintMenu()
 	cout << "1. add student" << endl;
 	cout << "2. add school class" << endl;
 	cout << "3. registerd students" << endl;
-	cout << "4. search for student" << endl;
-	cout << "5. search for class" << endl;
-	cout << "6. add student to class" << endl;
-	cout << "7. exit program" << endl;
+	cout << "4. registerd class" << endl;
+	cout << "5. remove student" << endl;
+	cout << "6. remove class" << endl;
+	cout << "7. add student to class" << endl;
+	cout << "8. exit program" << endl;
 	cout << "";
 }
 
@@ -88,20 +184,26 @@ void SchoolSystem::Run()
 			break;
 
 		case 4:
-			
+			registrerade_klasser();
 
 			break;
 
 		case 5:
-
+			RemoveStudent();
 
 			break;
 
 		case 6:
+			Removeclass();
 
 			break;
 
 		case 7:
+
+
+			break;
+
+		case 8:
 
 			exit(0);
 

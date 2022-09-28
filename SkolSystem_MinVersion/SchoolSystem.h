@@ -13,6 +13,9 @@ public:
 	void RemoveStudent();
 	void School_klass();
 	void registrerade_elever();
+	void registrerade_klasser();
+	void Removeclass();
+	void AddStudent_class();
 
 	std::vector<Student> students;
 	std::vector<std::string> schoolClasses;
