@@ -1,9 +1,11 @@
 #pragma once
 #include <string>
 
+using namespace std;
+
 struct Student
 {
-	std::string name = "";
-	int age = 0;
-	string SchoolClass = "";
+	string name = "";
+	string klass = "";
+	//string SchoolClass = "";
 };
